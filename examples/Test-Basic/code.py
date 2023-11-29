@@ -1,13 +1,17 @@
 # An example that uses the RadSens CircuitPython library for use on a Raspberry Pi Pico W.
 # https://julianmcconnell.com
-# Version 20231001a
+# Version 20231129a
 
 import board
 import time
+import busio
 from RadSens import CG_RadSens
 
-# Initialize the RadSens sensor with the default I2C address
-sensor = CG_RadSens()
+# Initialize I2C for the main program
+i2c = busio.I2C(sda=board.GP20, scl=board.GP21)
+
+# Create an instance of the CG_RadSens class and pass the i2c object
+sensor = CG_RadSens(i2c)
 
 # Initialize the sensor
 if sensor.init():

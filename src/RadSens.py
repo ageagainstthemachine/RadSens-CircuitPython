@@ -27,9 +27,9 @@ RS_LMP_MODE_RG = 0x0C
 
 # RadSens class definition
 class CG_RadSens:
-    def __init__(self, sensor_address=RS_DEFAULT_I2C_ADDRESS):
+    def __init__(self, i2c, sensor_address=RS_DEFAULT_I2C_ADDRESS):
         # Initialize I2C interface
-        self.i2c = busio.I2C(sda=board.GP0, scl=board.GP1, frequency=100000)
+        self.i2c = i2c
         self._sensor_address = sensor_address
         self._chip_id = 0
         self._firmware_ver = 0
